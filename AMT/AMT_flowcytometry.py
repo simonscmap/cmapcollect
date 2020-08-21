@@ -151,49 +151,49 @@ cleaned_df = combined_cleaning(df)
 dataset_meta_data_df = pd.DataFrame(columns=["dataset_short_name","dataset_long_name","dataset_version","dataset_release_date","dataset_make","dataset_source","dataset_distributor","dataset_acknowledgement","dataset_history","dataset_description","dataset_references","climatology","cruise_names"])
 vars_meta_data_df = pd.DataFrame(columns=["var_short_name","var_long_name","var_sensor","var_unit","var_spatial_res","var_temporal_res","var_discipline","visualize","var_keywords","var_comment"])
 
-def combined_vars_metadata():
+# def combined_vars_metadata():
 
-    vars_meta_data_df["var_short_name"] = ['synechococcus_carbon_biomass_C700A90Z','prochlorococcus_carbon_biomass_C701A90Z','picoeukaryotic_carbon_biomass_CYEUA00A','bacteria_carbon_biomass_HBBMAFTX','heterotrophic_bacteria_abundance_HBCCAFTX_Zubkov'             ,'synechococcus_abundance_P700A90Z_Zubkov','prochlorococcus_abundance_P701A90Z_Zubkov','picoeukaryotic_abundance_PYEUA00A_Zubkov','bodc_station','original_station','gear' ,'BODC_bottle_code' ,'bottle_flag','w_depth','bottle_pressure']
-    vars_meta_data_df["var_long_name"] = ['Carbon Biomass of Synechococcus'       ,'Carbon Biomass of Prochlorococcus'      ,'Carbon Biomass of Picoeukaryotic Cells','Carbon Biomass of Bacteria'      ,'Abundance of Heterotrophic Bacteria','Abundance of Synechococcus'             ,'Abundance of Prochlorococcus'             ,'Abundance of Picoeukaryotic Cells'       ,'BODC Station','Original Station', 'Gear', 'BODC Bottle Code','Bottle Flag', 'W Depth', 'Bottle Pressure']
-    vars_meta_data_df["var_sensor"] = ['Flow Cytometry'] * len(vars_meta_data_df["var_short_name"])
-    vars_meta_data_df["var_unit"] = ['mg/m^3','mg/m^3','mg/m^3','mg/m^3','number/ml','number/ml','number/ml','number/ml','','','','','','','']
-    vars_meta_data_df["var_spatial_res"] = ['irregular'] * len(vars_meta_data_df["var_short_name"])
-    vars_meta_data_df["var_temporal_res"] = ['irregular'] * len(vars_meta_data_df["var_short_name"])
-    vars_meta_data_df["var_discipline"] = ['Biology+BioGeoChemistry+Biogeography'] * 8 + ['Uncategorized'] * 7
-    vars_meta_data_df["visualize"] = [1,1,1,1,1,1,1,1,0,0,0,0,0,0,1]
-    vars_meta_data_df["var_keywords"] = [
-    "CTD,cruise,observation,insitu,in-situ,flow cytometry, flow cytometer, ATM, Atlantic Meridional Transect,biology,biogeochemistry,amt06,JR19980514,cyanobacteria,synechococcus carbon biomass,C700A90Z",
-    "CTD,cruise,observation,insitu,in-situ,flow cytometry, flow cytometer, ATM, Atlantic Meridional Transect,biology,biogeochemistry,amt06,JR19980514,cyanobacteria,prochlorococcus carbon biomass,C701A90Z",
-    "CTD,cruise,observation,insitu,in-situ,flow cytometry, flow cytometer, ATM, Atlantic Meridional Transect,biology,biogeochemistry,amt06,JR19980514,picoeukaryotic carbon biomass,CYEUA00A",
-    "CTD,cruise,observation,insitu,in-situ,flow cytometry, flow cytometer, ATM, Atlantic Meridional Transect,biology,biogeochemistry,amt06,JR19980514,cyanobacteria,bacteria carbon biomass,HBBMAFTX",
-    "CTD,cruise,observation,insitu,in-situ,flow cytometry, flow cytometer, ATM, Atlantic Meridional Transect,biology,biogeochemistry,amt06,JR19980514,cyanobacteria,bacteria abundance,HBCCAFTX,Zubkov",
-    "CTD,cruise,observation,insitu,in-situ,flow cytometry, flow cytometer, ATM, Atlantic Meridional Transect,biology,biogeochemistry,amt06,JR19980514,cyanobacteria,synechococcus abundance,P700A90Z Zubkov",
-    "CTD,cruise,observation,insitu,in-situ,flow cytometry, flow cytometer, ATM, Atlantic Meridional Transect,biology,biogeochemistry,amt06,JR19980514,cyanobacteria,prochlorococcus abundance,P701A90Z Zubkov",
-    "CTD,cruise,observation,insitu,in-situ,flow cytometry, flow cytometer, ATM, Atlantic Meridional Transect,biology,biogeochemistry,amt06,JR19980514,picoeukaryotic abundance,PYEUA00A Zubkov",
-    "CTD,cruise,observation,insitu,in-situ,flow cytometry, flow cytometer, ATM, Atlantic Meridional Transect,biology,biogeochemistry,amt06,JR19980514,bodc_station,bodc station,station",
-    "CTD,cruise,observation,insitu,in-situ,flow cytometry, flow cytometer, ATM, Atlantic Meridional Transect,biology,biogeochemistry,amt06,JR19980514,original_station,original station,",
-    "CTD,cruise,observation,insitu,in-situ,flow cytometry, flow cytometer, ATM, Atlantic Meridional Transect,biology,biogeochemistry,amt06,JR19980514,gear",
-    "CTD,cruise,observation,insitu,in-situ,flow cytometry, flow cytometer, ATM, Atlantic Meridional Transect,biology,biogeochemistry,amt06,JR19980514,BODC_bottle_code,BODC bottle code",
-    "CTD,cruise,observation,insitu,in-situ,flow cytometry, flow cytometer, ATM, Atlantic Meridional Transect,biology,biogeochemistry,amt06,JR19980514,bottle_flag,bottle flag",
-    "CTD,cruise,observation,insitu,in-situ,flow cytometry, flow cytometer, ATM, Atlantic Meridional Transect,biology,biogeochemistry,amt06,JR19980514,w_depth,w depth",
-    "CTD,cruise,observation,insitu,in-situ,flow cytometry, flow cytometer, ATM, Atlantic Meridional Transect,biology,biogeochemistry,amt06,JR19980514,bottle_pressure,bottle pressure"
-    ]
-    vars_meta_data_df["var_comment"] = [
-    'Carbon biomass of Synechococcus (ITIS: 773: WoRMS 160572) per unit volume of the water body by automated flow cytometry and abundance to carbon conversion. Doc Reference number = 209612. Originator Name and Institute: Mikhail V Zubkov, National Oceanography Centre, Southampton',
-    'Carbon biomass of Prochlorococcus (ITIS: 610076: WoRMS 345515) per unit volume of the water body by automated flow cytometry and abundance to carbon conversion. Doc Reference number = 209612. Originator Name and Institute: Mikhail V Zubkov, National Oceanography Centre, Southampton',
-    'Carbon biomass of picoeukaryotic cells per unit volume of the water body by automated flow cytometry and abundance to carbon conversion. Doc Reference number = 209612. Originator Name and Institute: Mikhail V Zubkov, National Oceanography Centre, Southampton',
-    'Carbon biomass of Bacteria (ITIS: 202421: WoRMS 6) [Subgroup: heterotrophic] per unit volume of the water body by automated flow cytometry and abundance to carbon conversion. Doc Reference number = 209612. Originator Name and Institute: Mikhail V Zubkov, National Oceanography Centre, Southampton',
-    'Abundance of bacteria (ITIS: 202421: WoRMS 6) [Subgroup: heterotrophic] per unit volume of the water body by flow cytometry and subtraction of Synechococcus+Prochlorococcus from total bacteria. Doc Reference number = 209612. Originator Name and Institute: Mikhail V Zubkov, National Oceanography Centre, Southampton',
-    'Abundance of Synechococcus (ITIS: 773: WoRMS 160572) per unit volume of the water body by flow cytometry. Doc Reference number = 209612. Originator Name and Institute: Mikhail V Zubkov, National Oceanography Centre, Southampton',
-    'Abundance of Prochlorococcus (ITIS: 610076: WoRMS 345515) per unit volume of the water body by flow cytometry. Doc Reference number = 209612. Originator Name and Institute: Mikhail V Zubkov, National Oceanography Centre, Southampton',
-    'Abundance of picoeukaryotic cells per unit volume of the water body by flow cytometry. Doc Reference number = 209612. Originator Name and Institute: Mikhail V Zubkov, National Oceanography Centre, Southampton',
-    '',
-    '',
-    '',
-    '',
-    '{}'.format(str(flag_data)),
-    '',
-    '']
+#     vars_meta_data_df["var_short_name"] = ['synechococcus_carbon_biomass_C700A90Z','prochlorococcus_carbon_biomass_C701A90Z','picoeukaryotic_carbon_biomass_CYEUA00A','bacteria_carbon_biomass_HBBMAFTX','heterotrophic_bacteria_abundance_HBCCAFTX_Zubkov'             ,'synechococcus_abundance_P700A90Z_Zubkov','prochlorococcus_abundance_P701A90Z_Zubkov','picoeukaryotic_abundance_PYEUA00A_Zubkov','bodc_station','original_station','gear' ,'BODC_bottle_code' ,'bottle_flag','w_depth','bottle_pressure']
+#     vars_meta_data_df["var_long_name"] = ['Carbon Biomass of Synechococcus'       ,'Carbon Biomass of Prochlorococcus'      ,'Carbon Biomass of Picoeukaryotic Cells','Carbon Biomass of Bacteria'      ,'Abundance of Heterotrophic Bacteria','Abundance of Synechococcus'             ,'Abundance of Prochlorococcus'             ,'Abundance of Picoeukaryotic Cells'       ,'BODC Station','Original Station', 'Gear', 'BODC Bottle Code','Bottle Flag', 'W Depth', 'Bottle Pressure']
+#     vars_meta_data_df["var_sensor"] = ['Flow Cytometry'] * len(vars_meta_data_df["var_short_name"])
+#     vars_meta_data_df["var_unit"] = ['mg/m^3','mg/m^3','mg/m^3','mg/m^3','number/ml','number/ml','number/ml','number/ml','','','','','','','']
+#     vars_meta_data_df["var_spatial_res"] = ['irregular'] * len(vars_meta_data_df["var_short_name"])
+#     vars_meta_data_df["var_temporal_res"] = ['irregular'] * len(vars_meta_data_df["var_short_name"])
+#     vars_meta_data_df["var_discipline"] = ['Biology+BioGeoChemistry+Biogeography'] * 8 + ['Uncategorized'] * 7
+#     vars_meta_data_df["visualize"] = [1,1,1,1,1,1,1,1,0,0,0,0,0,0,1]
+#     vars_meta_data_df["var_keywords"] = [
+#     "CTD,cruise,observation,insitu,in-situ,flow cytometry, flow cytometer, ATM, Atlantic Meridional Transect,biology,biogeochemistry,amt06,JR19980514,cyanobacteria,synechococcus carbon biomass,C700A90Z",
+#     "CTD,cruise,observation,insitu,in-situ,flow cytometry, flow cytometer, ATM, Atlantic Meridional Transect,biology,biogeochemistry,amt06,JR19980514,cyanobacteria,prochlorococcus carbon biomass,C701A90Z",
+#     "CTD,cruise,observation,insitu,in-situ,flow cytometry, flow cytometer, ATM, Atlantic Meridional Transect,biology,biogeochemistry,amt06,JR19980514,picoeukaryotic carbon biomass,CYEUA00A",
+#     "CTD,cruise,observation,insitu,in-situ,flow cytometry, flow cytometer, ATM, Atlantic Meridional Transect,biology,biogeochemistry,amt06,JR19980514,cyanobacteria,bacteria carbon biomass,HBBMAFTX",
+#     "CTD,cruise,observation,insitu,in-situ,flow cytometry, flow cytometer, ATM, Atlantic Meridional Transect,biology,biogeochemistry,amt06,JR19980514,cyanobacteria,bacteria abundance,HBCCAFTX,Zubkov",
+#     "CTD,cruise,observation,insitu,in-situ,flow cytometry, flow cytometer, ATM, Atlantic Meridional Transect,biology,biogeochemistry,amt06,JR19980514,cyanobacteria,synechococcus abundance,P700A90Z Zubkov",
+#     "CTD,cruise,observation,insitu,in-situ,flow cytometry, flow cytometer, ATM, Atlantic Meridional Transect,biology,biogeochemistry,amt06,JR19980514,cyanobacteria,prochlorococcus abundance,P701A90Z Zubkov",
+#     "CTD,cruise,observation,insitu,in-situ,flow cytometry, flow cytometer, ATM, Atlantic Meridional Transect,biology,biogeochemistry,amt06,JR19980514,picoeukaryotic abundance,PYEUA00A Zubkov",
+#     "CTD,cruise,observation,insitu,in-situ,flow cytometry, flow cytometer, ATM, Atlantic Meridional Transect,biology,biogeochemistry,amt06,JR19980514,bodc_station,bodc station,station",
+#     "CTD,cruise,observation,insitu,in-situ,flow cytometry, flow cytometer, ATM, Atlantic Meridional Transect,biology,biogeochemistry,amt06,JR19980514,original_station,original station,",
+#     "CTD,cruise,observation,insitu,in-situ,flow cytometry, flow cytometer, ATM, Atlantic Meridional Transect,biology,biogeochemistry,amt06,JR19980514,gear",
+#     "CTD,cruise,observation,insitu,in-situ,flow cytometry, flow cytometer, ATM, Atlantic Meridional Transect,biology,biogeochemistry,amt06,JR19980514,BODC_bottle_code,BODC bottle code",
+#     "CTD,cruise,observation,insitu,in-situ,flow cytometry, flow cytometer, ATM, Atlantic Meridional Transect,biology,biogeochemistry,amt06,JR19980514,bottle_flag,bottle flag",
+#     "CTD,cruise,observation,insitu,in-situ,flow cytometry, flow cytometer, ATM, Atlantic Meridional Transect,biology,biogeochemistry,amt06,JR19980514,w_depth,w depth",
+#     "CTD,cruise,observation,insitu,in-situ,flow cytometry, flow cytometer, ATM, Atlantic Meridional Transect,biology,biogeochemistry,amt06,JR19980514,bottle_pressure,bottle pressure"
+#     ]
+#     vars_meta_data_df["var_comment"] = [
+#     'Carbon biomass of Synechococcus (ITIS: 773: WoRMS 160572) per unit volume of the water body by automated flow cytometry and abundance to carbon conversion. Doc Reference number = 209612. Originator Name and Institute: Mikhail V Zubkov, National Oceanography Centre, Southampton',
+#     'Carbon biomass of Prochlorococcus (ITIS: 610076: WoRMS 345515) per unit volume of the water body by automated flow cytometry and abundance to carbon conversion. Doc Reference number = 209612. Originator Name and Institute: Mikhail V Zubkov, National Oceanography Centre, Southampton',
+#     'Carbon biomass of picoeukaryotic cells per unit volume of the water body by automated flow cytometry and abundance to carbon conversion. Doc Reference number = 209612. Originator Name and Institute: Mikhail V Zubkov, National Oceanography Centre, Southampton',
+#     'Carbon biomass of Bacteria (ITIS: 202421: WoRMS 6) [Subgroup: heterotrophic] per unit volume of the water body by automated flow cytometry and abundance to carbon conversion. Doc Reference number = 209612. Originator Name and Institute: Mikhail V Zubkov, National Oceanography Centre, Southampton',
+#     'Abundance of bacteria (ITIS: 202421: WoRMS 6) [Subgroup: heterotrophic] per unit volume of the water body by flow cytometry and subtraction of Synechococcus+Prochlorococcus from total bacteria. Doc Reference number = 209612. Originator Name and Institute: Mikhail V Zubkov, National Oceanography Centre, Southampton',
+#     'Abundance of Synechococcus (ITIS: 773: WoRMS 160572) per unit volume of the water body by flow cytometry. Doc Reference number = 209612. Originator Name and Institute: Mikhail V Zubkov, National Oceanography Centre, Southampton',
+#     'Abundance of Prochlorococcus (ITIS: 610076: WoRMS 345515) per unit volume of the water body by flow cytometry. Doc Reference number = 209612. Originator Name and Institute: Mikhail V Zubkov, National Oceanography Centre, Southampton',
+#     'Abundance of picoeukaryotic cells per unit volume of the water body by flow cytometry. Doc Reference number = 209612. Originator Name and Institute: Mikhail V Zubkov, National Oceanography Centre, Southampton',
+#     '',
+#     '',
+#     '',
+#     '',
+#     '{}'.format(str(flag_data)),
+#     '',
+#     '']
 def compile_AMT_cruise(cleaned_df,dataset_meta_data_df, vars_meta_data_df):
     for cruise in cleaned_df['cruise'].unique():
             cruise_data = drop_empty_cols(cleaned_df[cleaned_df["cruise"] == cruise]).replace(np.nan, "", regex=True)
@@ -204,30 +204,30 @@ def compile_AMT_cruise(cleaned_df,dataset_meta_data_df, vars_meta_data_df):
             amt_core_keywords = """cruise,observation,insitu,in-situ,flow cytometry, flow cytometer, ATM, Atlantic Meridional Transect,biology,biogeochemistry,{cruise_name},{cruise_nickname}""".format(cruise_name =cruise_details['Name'].iloc[0],cruise_nickname = cruise_details['Nickname'].iloc[0])
 
             vars_dict = { #["var_discipline","visualize","var_keywords","var_comment"]
-            'synechococcus_carbon_biomass_C700A90Z': ['Carbon Biomass of Synechococcus','Flow Cytometry','mg/m^3','irregular','irregular','Biology+BioGeoChemistry+Biogeography','1',amt_core_keywords,''],
-            'prochlorococcus_carbon_biomass_C701A90Z': ['Carbon Biomass of Prochlorococcus','Flow Cytometry','mg/m^3','irregular','irregular','Biology+BioGeoChemistry+Biogeography','1',amt_core_keywords,''],
-            'picoeukaryotic_carbon_biomass_CYEUA00A':['Carbon Biomass of Picoeukaryotic Cells','Flow Cytometry','mg/m^3','irregular','irregular','Biology+BioGeoChemistry+Biogeography','1',amt_core_keywords,''],
-            'bacteria_carbon_biomass_HBBMAFTX':['Carbon Biomass of Bacteria','Flow Cytometry','mg/m^3','irregular','irregular','Biology+BioGeoChemistry+Biogeography','1',amt_core_keywords,''],
-            'bacteria_abundance_C804B6A6': ['Abundance of Heterotrophic Bacteria','Flow Cytometry','number/ml','irregular','irregular','Biology+BioGeoChemistry+Biogeography','1',amt_core_keywords,''],
-            'bacteria_abundance_std_dev_H396080A': ['Abundance of Heterotrophic Bacteria Standard Deviation','Flow Cytometry','irregular','irregular','Biology+BioGeoChemistry+Biogeography','1',amt_core_keywords,'',''],
-            'bacteria_abundance_HBCCAFTX_Zubkov': ['Abundance of Heterotrophic Bacteria','Flow Cytometry','number/ml','irregular','irregular','Biology+BioGeoChemistry+Biogeography','1',amt_core_keywords,''],
-            'cryptophyceae_abundance_J79A0596': ['Abundance of Cryptophyceae','Flow Cytometry','number/ml','irregular','irregular','Biology+BioGeoChemistry+Biogeography','1',amt_core_keywords,''],
-            'bacteria_abundance_P18318A9': ['Abundance of Heterotrophic Bacteria','Flow Cytometry','number/ml','irregular','irregular','Biology+BioGeoChemistry+Biogeography','1',amt_core_keywords''],
-            'prymnesiophyceae_abundance_P490A00Z': ['Abundance of Prymnesiophyceae','Flow Cytometry','number/ml','irregular','irregular','Biology+BioGeoChemistry+Biogeography','1',amt_core_keywords,''],
-            'synechococcus_abundance_P700A90Z_Tarran': ['Abundance of Synechococcus','Flow Cytometry','number/ml','irregular','irregular','Biology+BioGeoChemistry+Biogeography','1',amt_core_keywords,''],
-            'synechococcus_abundance_P700A90Z_Zubkov': ['Abundance of Synechococcus','Flow Cytometry','number/ml','irregular','irregular','Biology+BioGeoChemistry+Biogeography','1',amt_core_keywords,''],
-            'prochlorococcus_abundance_P701A90Z_Tarran': ['Abundance of Prochlorococcus','Flow Cytometry','number/ml','irregular','irregular','Biology+BioGeoChemistry+Biogeography','1',amt_core_keywords,''],
-            'prochlorococcus_abundance_P701A90Z_Zubkov': ['Abundance of Prochlorococcus','Flow Cytometry','number/ml','irregular','irregular','Biology+BioGeoChemistry+Biogeography','1',amt_core_keywords,''],
-            'picoeukaryotic_abundance_PYEUA00A_Tarran': ['Abundance of Picoeukaryotic','Flow Cytometry','number/ml','irregular','irregular','Biology+BioGeoChemistry+Biogeography','1',amt_core_keywords,''],
-            'picoeukaryotic_abundance_PYEUA00A_Zubkov': ['Abundance of Picoeukaryotic','Flow Cytometry','number/ml','irregular','irregular','Biology+BioGeoChemistry+Biogeography','1',amt_core_keywords,''],
-            'bacteria_abundance_TBCCAFTX_Tarran': ['Abundance of Heterotrophic Bacteria','Flow Cytometry','number/ml','irregular','irregular','Biology+BioGeoChemistry+Biogeography','1',amt_core_keywords,''],
-            'bacteria_abundance_TBCCAFTX_Zubkov': ['Abundance of Heterotrophic Bacteria','Flow Cytometry','number/ml','irregular','irregular','Biology+BioGeoChemistry+Biogeography','1',amt_core_keywords,''],
-            'nanoeukaryotic_abundance_X726A86B': ['Abundance of Nanoeukaryotes','Flow Cytometry','number/ml','irregular','irregular','Biology+BioGeoChemistry+Biogeography','1',amt_core_keywords,''],
+            'synechococcus_carbon_biomass_C700A90Z': ['Carbon Biomass of Synechococcus','Flow Cytometry','mg/m^3','irregular','irregular','Biology+BioGeoChemistry+Biogeography','1',amt_core_keywords,'Carbon biomass of Synechococcus (ITIS: 773: WoRMS 160572) per unit volume of the water body by automated flow cytometry and abundance to carbon conversion. Doc Reference number = 209612. Originator Name and Institute: Mikhail V Zubkov, National Oceanography Centre, Southampton'],
+            'prochlorococcus_carbon_biomass_C701A90Z': ['Carbon Biomass of Prochlorococcus','Flow Cytometry','mg/m^3','irregular','irregular','Biology+BioGeoChemistry+Biogeography','1',amt_core_keywords,'Carbon biomass of Prochlorococcus (ITIS: 610076: WoRMS 345515) per unit volume of the water body by automated flow cytometry and abundance to carbon conversion. Doc Reference number = 209612. Originator Name and Institute: Mikhail V Zubkov, National Oceanography Centre, Southampton'],
+            'picoeukaryotic_carbon_biomass_CYEUA00A':['Carbon Biomass of Picoeukaryotic Cells','Flow Cytometry','mg/m^3','irregular','irregular','Biology+BioGeoChemistry+Biogeography','1',amt_core_keywords,'Carbon biomass of picoeukaryotic cells per unit volume of the water body by automated flow cytometry and abundance to carbon conversion. Doc Reference number = 209612. Originator Name and Institute: Mikhail V Zubkov, National Oceanography Centre, Southampton'],
+            'bacteria_carbon_biomass_HBBMAFTX':['Carbon Biomass of Bacteria','Flow Cytometry','mg/m^3','irregular','irregular','Biology+BioGeoChemistry+Biogeography','1',amt_core_keywords,'Carbon biomass of Bacteria (ITIS: 202421: WoRMS 6) [Subgroup: heterotrophic] per unit volume of the water body by automated flow cytometry and abundance to carbon conversion. Doc Reference number = 209612. Originator Name and Institute: Mikhail V Zubkov, National Oceanography Centre, Southampton'],
+            'bacteria_abundance_C804B6A6': ['Abundance of Heterotrophic Bacteria','Flow Cytometry','number/ml','irregular','irregular','Biology+BioGeoChemistry+Biogeography','1',amt_core_keywords,'Abundance of bacteria (ITIS: 202421: WoRMS 6) [Subgroup: heterotrophic] per unit volume of the water body by flow cytometry and subtraction of Synechococcus+Prochlorococcus from total bacteria. Doc Reference number = 209612. Originator Name and Institute: Mikhail V Zubkov, National Oceanography Centre, Southampton'],
+            'bacteria_abundance_std_dev_H396080A': ['Abundance of Heterotrophic Bacteria Standard Deviation','Flow Cytometry','irregular','irregular','Biology+BioGeoChemistry+Biogeography','1',amt_core_keywords,'Abundance standard deviation of bacteria (ITIS: 202421: WoRMS 6) per unit volume of the water body by flow cytometry. Doc Reference number = 218765. Originator Name and Institute: Mikhail V Zubkov, National Oceanography Centre, Southampton'],
+            'bacteria_abundance_HBCCAFTX_Zubkov': ['Abundance of Heterotrophic Bacteria','Flow Cytometry','number/ml','irregular','irregular','Biology+BioGeoChemistry+Biogeography','1',amt_core_keywords,'Abundance of bacteria (ITIS: 202421: WoRMS 6) [Subgroup: heterotrophic] per unit volume of the water body by flow cytometry and subtraction of Synechococcus+Prochlorococcus from total bacteria. Doc Reference number = 207136 . Originator Name and Institute: Mikhail V Zubkov, National Oceanography Centre, Southampton'],
+            'cryptophyceae_abundance_J79A0596': ['Abundance of Cryptophyceae','Flow Cytometry','number/ml','irregular','irregular','Biology+BioGeoChemistry+Biogeography','1',amt_core_keywords,'Abundance of Cryptophyceae (ITIS: 10598: WoRMS 17639) per unit volume of the water body by flow cytometry. Doc Reference number = 207153. Originator Name and Institute: Glen A Tarran, Plymouth Marine Laboratory'],
+            'bacteria_abundance_P18318A9': ['Abundance of Heterotrophic Bacteria','Flow Cytometry','number/ml','irregular','irregular','Biology+BioGeoChemistry+Biogeography','1',amt_core_keywords,'Abundance of bacteria (ITIS: 202421: WoRMS 6) [Subgroup: heterotrophic; high nucleic acid cell content] per unit volume of the water body by flow cytometry. Doc Reference number = 207153. Originator Name and Institute: Glen A Tarran, Plymouth Marine Laboratory'],
+            'prymnesiophyceae_abundance_P490A00Z': ['Abundance of Prymnesiophyceae','Flow Cytometry','number/ml','irregular','irregular','Biology+BioGeoChemistry+Biogeography','1',amt_core_keywords,'Abundance of Prymnesiophyceae (ITIS: 2135: WoRMS 115057) [Subgroup: coccolithophores] per unit volume of the water body by flow cytometry. Doc Reference number = 207153. Originator Name and Institute: Glen A Tarran, Plymouth Marine Laboratory'],
+            'synechococcus_abundance_P700A90Z_Tarran': ['Abundance of Synechococcus','Flow Cytometry','number/ml','irregular','irregular','Biology+BioGeoChemistry+Biogeography','1',amt_core_keywords,'Abundance of Synechococcus (ITIS: 773: WoRMS 160572) per unit volume of the water body by flow cytometry. Doc Reference number = 207153. Originator Name and Institute: Glen A Tarran, Plymouth Marine Laboratory'],
+            'synechococcus_abundance_P700A90Z_Zubkov': ['Abundance of Synechococcus','Flow Cytometry','number/ml','irregular','irregular','Biology+BioGeoChemistry+Biogeography','1',amt_core_keywords,'Abundance of Synechococcus (ITIS: 773: WoRMS 160572) per unit volume of the water body by flow cytometry. Doc Reference number = . Originator Name and Institute:'],
+            'prochlorococcus_abundance_P701A90Z_Tarran': ['Abundance of Prochlorococcus','Flow Cytometry','number/ml','irregular','irregular','Biology+BioGeoChemistry+Biogeography','1',amt_core_keywords,'Abundance of Prochlorococcus (ITIS: 610076: WoRMS 345515) per unit volume of the water body by flow cytometry. Doc Reference number = 207153. Originator Name and Institute:Glen A Tarran, Plymouth Marine Laboratory'],
+            'prochlorococcus_abundance_P701A90Z_Zubkov': ['Abundance of Prochlorococcus','Flow Cytometry','number/ml','irregular','irregular','Biology+BioGeoChemistry+Biogeography','1',amt_core_keywords,'Abundance of Prochlorococcus (ITIS: 610076: WoRMS 345515) per unit volume of the water body by flow cytometry. Doc Reference number = 207061. Originator Name and Institute: Mikhail V Zubkov, National Oceanography Centre, Southampton'],
+            'picoeukaryotic_abundance_PYEUA00A_Tarran': ['Abundance of Picoeukaryotic','Flow Cytometry','number/ml','irregular','irregular','Biology+BioGeoChemistry+Biogeography','1',amt_core_keywords,'Abundance of picoeukaryotic cells per unit volume of the water body by flow cytometry. Doc Reference number = 207153. Originator Name and Institute:Glen A Tarran, Plymouth Marine Laboratory'],
+            'picoeukaryotic_abundance_PYEUA00A_Zubkov': ['Abundance of Picoeukaryotic','Flow Cytometry','number/ml','irregular','irregular','Biology+BioGeoChemistry+Biogeography','1',amt_core_keywords,'Abundance of picoeukaryotic cells per unit volume of the water body by flow cytometry. Doc Reference number = 207061. Originator Name and Institute: Mikhail V Zubkov, National Oceanography Centre, Southampton'],
+            'bacteria_abundance_TBCCAFTX_Tarran': ['Abundance of Heterotrophic Bacteria','Flow Cytometry','number/ml','irregular','irregular','Biology+BioGeoChemistry+Biogeography','1',amt_core_keywords,'Abundance of bacteria (ITIS: 202421: WoRMS 6) per unit volume of the water body by flow cytometry. Doc Reference number = 231326. Originator Name and Institute: Glen A Tarran, Plymouth Marine Laboratory'],
+            'bacteria_abundance_TBCCAFTX_Zubkov': ['Abundance of Heterotrophic Bacteria','Flow Cytometry','number/ml','irregular','irregular','Biology+BioGeoChemistry+Biogeography','1',amt_core_keywords,'Abundance of bacteria (ITIS: 202421: WoRMS 6) per unit volume of the water body by flow cytometry. Doc Reference number = 218765 . Originator Name and Institute: Mikhail V Zubkov, National Oceanography Centre, Southampton'],
+            'nanoeukaryotic_abundance_X726A86B': ['Abundance of Nanoeukaryotes','Flow Cytometry','number/ml','irregular','irregular','Biology+BioGeoChemistry+Biogeography','1',amt_core_keywords,'Abundance of nanoeukaryotic cells [Size: 2-12um] per unit volume of the water body by flow cytometry . Doc Reference number = 231326. Originator Name and Institute: Glen A Tarran, Plymouth Marine Laboratory'],
             'bodc_station': ['BODC Station','Uncategorized','','irregular','irregular','Biology+BioGeoChemistry+Biogeography','0',amt_core_keywords,''],
             'original_station': ['Original Station','Uncategorized','','irregular','irregular','Biology+BioGeoChemistry+Biogeography','0',amt_core_keywords,''],
             'gear': ['Gear','Uncategorized','irregular','irregular','','Biology+BioGeoChemistry+Biogeography','0',amt_core_keywords,''],
             'BODC_bottle_code': ['BODC Bottle Code','Uncategorized','','irregular','irregular','Biology+BioGeoChemistry+Biogeography','0',amt_core_keywords,''],
-            'bottle_flag': ['Bottle Flag','Uncategorized','irregular','','irregular','Biology+BioGeoChemistry+Biogeography','0',amt_core_keywords,''],
+            'bottle_flag': ['Bottle Flag','Uncategorized','irregular','','irregular','Biology+BioGeoChemistry+Biogeography','0',amt_core_keywords,"""asdf"""],#"{flag_data}".format(flag_data =(str(flag_data))],
             'rosette_position': ['Rosette Position','Uncategorized','','irregular','irregular','Biology+BioGeoChemistry+Biogeography','0',amt_core_keywords,''],
             'firing_sequence': ['Firing Sequence','Uncategorized','','irregular','irregular','Biology+BioGeoChemistry+Biogeography','0',amt_core_keywords,''],
             'w_depth': ['Wire Depth','Uncategorized','m','irregular','irregular','Biology+BioGeoChemistry+Biogeography','0',amt_core_keywords,''],
@@ -236,7 +236,7 @@ def compile_AMT_cruise(cleaned_df,dataset_meta_data_df, vars_meta_data_df):
             
             
             
-            ataset_meta_data_df["dataset_short_name"] = [cruise_details['Name'].iloc[0] + "_" +cruise_details['Nickname'].iloc[0] + "_flow_cytometry"]
+            dataset_meta_data_df["dataset_short_name"] = [cruise_details['Name'].iloc[0] + "_" +cruise_details['Nickname'].iloc[0] + "_flow_cytometry"]
             dataset_meta_data_df["dataset_long_name"] = [cruise_details['Name'].iloc[0] + " " +cruise_details['Nickname'].iloc[0] + " - Atlantic Meridional Transect Flow Cytometry Data"]
             dataset_meta_data_df["dataset_version"] = ["Final"]
             dataset_meta_data_df["dataset_release_date"] = ["2020-07-07"]
@@ -250,8 +250,8 @@ def compile_AMT_cruise(cleaned_df,dataset_meta_data_df, vars_meta_data_df):
             dataset_meta_data_df["climatology"] = [""]
             dataset_meta_data_df["cruise_names"] = [cruise_details['Name'].iloc[0]]
             # """variable meta_data"""
-            vars_meta_data_df["var_short_name"] = list(cruise_data)
-            print(vars_meta_data_df)
+            # vars_meta_data_df["var_short_name"] = list(cruise_data)
+            # print(vars_meta_data_df)
             # vars_meta_data_df["var_short_name"] = ['synechococcus_carbon_biomass_C700A90Z','prochlorococcus_carbon_biomass_C701A90Z','picoeukaryotic_carbon_biomass_CYEUA00A','bacteria_carbon_biomass_HBBMAFTX','heterotrophic_bacteria_abundance_HBCCAFTX_Zubkov'             ,'synechococcus_abundance_P700A90Z_Zubkov','prochlorococcus_abundance_P701A90Z_Zubkov','picoeukaryotic_abundance_PYEUA00A_Zubkov','bodc_station','original_station','gear' ,'BODC_bottle_code' ,'bottle_flag','w_depth','bottle_pressure']
             # vars_meta_data_df["var_long_name"] = ['Carbon Biomass of Synechococcus'       ,'Carbon Biomass of Prochlorococcus'      ,'Carbon Biomass of Picoeukaryotic Cells','Carbon Biomass of Bacteria'      ,'Abundance of Heterotrophic Bacteria','Abundance of Synechococcus'             ,'Abundance of Prochlorococcus'             ,'Abundance of Picoeukaryotic Cells'       ,'BODC Station','Original Station', 'Gear', 'BODC Bottle Code','Bottle Flag', 'W Depth', 'Bottle Pressure']
             # vars_meta_data_df["var_sensor"] = ['Flow Cytometry'] * len(vars_meta_data_df["var_short_name"])
@@ -278,27 +278,82 @@ def compile_AMT_cruise(cleaned_df,dataset_meta_data_df, vars_meta_data_df):
             # "CTD,cruise,observation,insitu,in-situ,flow cytometry, flow cytometer, ATM, Atlantic Meridional Transect,biology,biogeochemistry,amt06,JR19980514,bottle_pressure,bottle pressure"
             # ]
             # vars_meta_data_df["var_comment"] = [
-            # 'Carbon biomass of Synechococcus (ITIS: 773: WoRMS 160572) per unit volume of the water body by automated flow cytometry and abundance to carbon conversion. Doc Reference number = 209612. Originator Name and Institute: Mikhail V Zubkov, National Oceanography Centre, Southampton',
-            # 'Carbon biomass of Prochlorococcus (ITIS: 610076: WoRMS 345515) per unit volume of the water body by automated flow cytometry and abundance to carbon conversion. Doc Reference number = 209612. Originator Name and Institute: Mikhail V Zubkov, National Oceanography Centre, Southampton',
-            # 'Carbon biomass of picoeukaryotic cells per unit volume of the water body by automated flow cytometry and abundance to carbon conversion. Doc Reference number = 209612. Originator Name and Institute: Mikhail V Zubkov, National Oceanography Centre, Southampton',
-            # 'Carbon biomass of Bacteria (ITIS: 202421: WoRMS 6) [Subgroup: heterotrophic] per unit volume of the water body by automated flow cytometry and abundance to carbon conversion. Doc Reference number = 209612. Originator Name and Institute: Mikhail V Zubkov, National Oceanography Centre, Southampton',
-            # 'Abundance of bacteria (ITIS: 202421: WoRMS 6) [Subgroup: heterotrophic] per unit volume of the water body by flow cytometry and subtraction of Synechococcus+Prochlorococcus from total bacteria. Doc Reference number = 209612. Originator Name and Institute: Mikhail V Zubkov, National Oceanography Centre, Southampton',
-            # 'Abundance of Synechococcus (ITIS: 773: WoRMS 160572) per unit volume of the water body by flow cytometry. Doc Reference number = 209612. Originator Name and Institute: Mikhail V Zubkov, National Oceanography Centre, Southampton',
-            # 'Abundance of Prochlorococcus (ITIS: 610076: WoRMS 345515) per unit volume of the water body by flow cytometry. Doc Reference number = 209612. Originator Name and Institute: Mikhail V Zubkov, National Oceanography Centre, Southampton',
-            # 'Abundance of picoeukaryotic cells per unit volume of the water body by flow cytometry. Doc Reference number = 209612. Originator Name and Institute: Mikhail V Zubkov, National Oceanography Centre, Southampton',
-            # '',
+            'Carbon biomass of Synechococcus (ITIS: 773: WoRMS 160572) per unit volume of the water body by automated flow cytometry and abundance to carbon conversion. Doc Reference number = 209612. Originator Name and Institute: Mikhail V Zubkov, National Oceanography Centre, Southampton',
+            'Carbon biomass of Prochlorococcus (ITIS: 610076: WoRMS 345515) per unit volume of the water body by automated flow cytometry and abundance to carbon conversion. Doc Reference number = 209612. Originator Name and Institute: Mikhail V Zubkov, National Oceanography Centre, Southampton',
+            'Carbon biomass of picoeukaryotic cells per unit volume of the water body by automated flow cytometry and abundance to carbon conversion. Doc Reference number = 209612. Originator Name and Institute: Mikhail V Zubkov, National Oceanography Centre, Southampton',
+            'Carbon biomass of Bacteria (ITIS: 202421: WoRMS 6) [Subgroup: heterotrophic] per unit volume of the water body by automated flow cytometry and abundance to carbon conversion. Doc Reference number = 209612. Originator Name and Institute: Mikhail V Zubkov, National Oceanography Centre, Southampton',
+            'Abundance of bacteria (ITIS: 202421: WoRMS 6) [Subgroup: heterotrophic] per unit volume of the water body by flow cytometry and subtraction of Synechococcus+Prochlorococcus from total bacteria. Doc Reference number = 209612. Originator Name and Institute: Mikhail V Zubkov, National Oceanography Centre, Southampton',
+            'Abundance of Synechococcus (ITIS: 773: WoRMS 160572) per unit volume of the water body by flow cytometry. Doc Reference number = 209612. Originator Name and Institute: Mikhail V Zubkov, National Oceanography Centre, Southampton',
+            'Abundance of Prochlorococcus (ITIS: 610076: WoRMS 345515) per unit volume of the water body by flow cytometry. Doc Reference number = 209612. Originator Name and Institute: Mikhail V Zubkov, National Oceanography Centre, Southampton',
+            'Abundance of picoeukaryotic cells per unit volume of the water body by flow cytometry. Doc Reference number = 209612. Originator Name and Institute: Mikhail V Zubkov, National Oceanography Centre, Southampton',
+            '',
             # '',
             # '',
             # '',
             # '{}'.format(str(flag_data)),
             # '',
             # '']
-            return cruise_data, dataset_meta_data_df
+            return vars_dict,cruise_data
             break
 #     combine_df_to_excel(vs.staging+'combined/AMT06_flow_cytometry.xlsx',amt06,dataset_meta_data_df, vars_meta_data_df)
 # clean_amt06(cleaned_df,dataset_meta_data_df, vars_meta_data_df)
-#
-#dataset_meta_data_df
+
+
+
+
+vars_dict,cruise_data = compile_AMT_cruise(cleaned_df,dataset_meta_data_df, vars_meta_data_df)
+
+common_vars =  list(set(list(vars_dict.keys())).intersection(set(list(cruise_data))))
+
+dict_you_want = { your_key: vars_dict[your_key] for your_key in common_vars }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
