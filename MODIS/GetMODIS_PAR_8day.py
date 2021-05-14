@@ -1,4 +1,3 @@
-
 import sys
 import os
 import urllib.request
@@ -20,7 +19,7 @@ def get_PAR(year, day):
 
     if (year % 4 == 0) and (start_index == 361):
         end_index = 366
-    base_folder = vs.collected_data + '/MODIS_PAR_8_day_data/'
+    base_folder = vs.collected_data + "/MODIS_PAR_8_day_data/"
     start_index = int(start_index) - 1
     end_index = int(end_index) - 1
 

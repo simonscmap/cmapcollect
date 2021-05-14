@@ -17,7 +17,7 @@ def get_POC(year, day):
         end_index = 365
     if (year % 4 == 0) and (start_index == 361):
         end_index = 366
-    base_folder = vs.collected_data + 'MODIS_POC_8_day_data/'
+    base_folder = vs.collected_data + "MODIS_POC_8_day_data/"
     start_index = int(start_index) - 1
     end_index = int(end_index) - 1
 
@@ -34,7 +34,7 @@ def get_POC(year, day):
     result = requests.get(url)
     try:
         result.raise_for_status()
-        f = open(path,'wb')
+        f = open(path, "wb")
         f.write(result.content)
         f.close()
         # print('contents of URL written to '+path)
@@ -56,4 +56,3 @@ endDay = int(365)
 for year in year_list:
     for day in range(startDay, endDay + 1):
         get_POC(year, day)
-
