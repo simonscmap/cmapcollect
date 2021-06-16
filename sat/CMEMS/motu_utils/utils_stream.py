@@ -31,12 +31,12 @@ import io, sys
 def copy(sourceHandler, destHandler, callback=None, blockSize=65535):
     """Copy the available content through the given handler to another one. Process
     can be monitored with the (optional) callback function.
-    
+
     sourceHandler: the handler through witch downloading content
-    destHandler: the handler into which writing data        
+    destHandler: the handler into which writing data
     callback: the callback function called for each block read. Signature: f: sizeRead -> void
     blockSize: the size of the block used to read data
-    
+
     returns the total size read
     """
     read = 0

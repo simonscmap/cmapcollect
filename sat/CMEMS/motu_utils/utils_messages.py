@@ -36,7 +36,7 @@ MESSAGES_FILE = utils_configpath.getConfigPath() + "/messages.properties"
 
 def get_external_messages():
     """Return a table of externalized messages.
-        
+
     The table is lazzy instancied (loaded once when called the first time)."""
     global _messages
     if _messages is None:

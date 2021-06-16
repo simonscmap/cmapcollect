@@ -125,23 +125,23 @@ class SmartRedirectHandler(HTTPRedirectHandler):
 
 def open_url(url, **kargsParam):
     """open an url and return an handler on it.
-       arguments can be :
-         headers : http headers to send
-            headers = {"Accept": "text/plain", 
-                       "User-Agent": "a user agent"
-                      }
-                      
-         proxy : the proxy to use when connecting to the url
-            proxy = { "url": "http://aproxy.server",
-                      "port": 8080,
-                      "user": "username",
-                      "password": "userpassword"
-                    }
-          
-         authentication: the authentication information
-            authentication = { "mode": "basic",
-                               "user": "username",
-                               "password": "password" }
+    arguments can be :
+      headers : http headers to send
+         headers = {"Accept": "text/plain",
+                    "User-Agent": "a user agent"
+                   }
+
+      proxy : the proxy to use when connecting to the url
+         proxy = { "url": "http://aproxy.server",
+                   "port": 8080,
+                   "user": "username",
+                   "password": "userpassword"
+                 }
+
+      authentication: the authentication information
+         authentication = { "mode": "basic",
+                            "user": "username",
+                            "password": "password" }
     """
     data = None
     log = logging.getLogger("utils_http:open_url")

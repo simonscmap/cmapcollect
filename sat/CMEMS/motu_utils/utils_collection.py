@@ -16,8 +16,8 @@ import collections
 
 
 class Map(object):
-    """ Map wraps a dictionary. It is essentially an abstract class from which
-    specific multimaps are subclassed. """
+    """Map wraps a dictionary. It is essentially an abstract class from which
+    specific multimaps are subclassed."""
 
     def __init__(self):
         self._dict = {}
@@ -44,13 +44,13 @@ class Map(object):
         del self._dict[key]
 
     def dict(self):
-        """ Allows access to internal dictionary, if necessary. Caution: multimaps 
+        """Allows access to internal dictionary, if necessary. Caution: multimaps
         will break if keys are not associated with proper container."""
         return self._dict
 
 
 class ListMultimap(Map):
-    """ ListMultimap is based on lists and allows multiple instances of same value. """
+    """ListMultimap is based on lists and allows multiple instances of same value."""
 
     def __init__(self, **values):
         self._dict = collections.defaultdict(list)
@@ -64,7 +64,7 @@ class ListMultimap(Map):
 
 
 class SetMultimap(Map):
-    """ SetMultimap is based on sets and prevents multiple instances of same value. """
+    """SetMultimap is based on sets and prevents multiple instances of same value."""
 
     def __init__(self):
         self._dict = collections.defaultdict(set)
@@ -77,7 +77,7 @@ class SetMultimap(Map):
 
 
 class DictMultimap(Map):
-    """ DictMultimap is based on dicts and allows fast tests for membership. """
+    """DictMultimap is based on dicts and allows fast tests for membership."""
 
     def __init__(self):
         self._dict = collections.defaultdict(dict)

@@ -47,10 +47,10 @@ TRACE_LEVEL = 1
 
 def log_url(log, message, url, level=logging.DEBUG):
     """Nicely logs the given url.
-    
+
     Print out the url with the first part (protocol, host, port, authority,
     user info, path, ref) and in sequence all the query parameters.
-    
+
     log: the log into which write the message
     message: a message to print before the url
     url: the url to log
@@ -67,8 +67,7 @@ def log_url(log, message, url, level=logging.DEBUG):
 
 
 class HTTPDebugProcessor(BaseHandler):
-    """ Track HTTP requests and responses with this custom handler.
-    """
+    """Track HTTP requests and responses with this custom handler."""
 
     def __init__(self, log, log_level=TRACE_LEVEL):
         self.log_level = log_level

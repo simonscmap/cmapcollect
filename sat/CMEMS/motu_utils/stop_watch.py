@@ -51,7 +51,7 @@ class StopWatch(object):
 
     def start(self, label=GLOBAL):
         """Starts a new counter
-           Returns the time the counter has been recorded.
+        Returns the time the counter has been recorded.
         """
         self.timers[label] = self.__time()
         return self.timers[label]
@@ -83,13 +83,11 @@ class StopWatch(object):
         return self.times
 
     def __time(self):
-        """Wrapper for time.time() to allow unit testing.
-        """
+        """Wrapper for time.time() to allow unit testing."""
         return time.time()
 
     def __str__(self):
-        """Nicely format the elapsed time
-        """
+        """Nicely format the elapsed time"""
         keys = list(self.times.keys()) + [
             x for x in list(self.timers.keys()) if x not in list(self.times.keys())
         ]

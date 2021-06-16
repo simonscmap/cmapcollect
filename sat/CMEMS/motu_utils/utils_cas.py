@@ -49,7 +49,7 @@ CAS_URL_PATTERN = "(.*)/login.*"
 def authenticate_CAS_for_URL(url, user, pwd, **url_config):
     """Performs a CAS authentication for the given URL service and returns
     the service url with the obtained credential.
-    
+
     The following algorithm is done:
     1) A connection is opened on the given URL
     2) We check that the response is an HTTP redirection
@@ -57,7 +57,7 @@ def authenticate_CAS_for_URL(url, user, pwd, **url_config):
     4) We ask for a ticket for the given user and password
     5) We ask for a service ticket for the given service
     6) Then we return a new url with the ticket attached
-    
+
     url: the url of the service to invoke
     user: the username
     pwd: the password"""

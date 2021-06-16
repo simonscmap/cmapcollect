@@ -75,8 +75,8 @@ log = None
 
 def get_client_version():
     """Return the version (as a string) of this client.
-    
-    The value is automatically set by the maven processing build, so don't 
+
+    The value is automatically set by the maven processing build, so don't
     touch it unless you know what you are doing."""
     version = "unknown"
     try:
@@ -88,8 +88,8 @@ def get_client_version():
 
 def get_client_artefact():
     """Return the artifact identifier (as a string) of this client.
-    
-    The value is automatically set by the maven processing build, so don't 
+
+    The value is automatically set by the maven processing build, so don't
     touch it unless you know what you are doing."""
     return "motuclient-python"
 
@@ -459,7 +459,7 @@ def get_url_config(_options, data=None):
 
 
 def get_requestUrl(dl_url, server, _options, **options):
-    """ Get the request url."""
+    """Get the request url."""
     stopWatch = stop_watch.localThreadStopWatch()
     start_time = datetime.datetime.now()
     stopWatch.start("get_request")
@@ -502,12 +502,12 @@ lastProgressPercentValue = 0.0
 
 
 def dl_2_file(dl_url, fh, block_size=65535, isADownloadRequest=None, **options):
-    """ Download the file with the main url (of Motu) file.
-     
+    """Download the file with the main url (of Motu) file.
+
     Motu can return an error message in the response stream without setting an
     appropriate http error code. So, in that case, the content-type response is
     checked, and if it is text/plain, we consider this as an error.
-    
+
     dl_url: the complete download url of Motu
     fh: file handler to use to write the downstream"""
 
@@ -659,7 +659,7 @@ def dl_2_file(dl_url, fh, block_size=65535, isADownloadRequest=None, **options):
 def execute_request(_options):
     """
     the main function that submit a request to motu. Available options are:
-    
+
     * Proxy configuration (with eventually user credentials)
       - proxy_server: 'http://my-proxy.site.com:8080'
       - proxy_user  : 'john'
@@ -667,20 +667,20 @@ def execute_request(_options):
 
     * Autorisation mode: 'cas', 'basic', 'none'
       - auth_mode: 'cas'
-      
+
     * User credentials for authentication 'cas' or 'basic'
       - user: 'john'
       - pwd:  'doe'
-    
+
     * Motu service URL
       - motu: 'http://atoll-dev.cls.fr:30080/mis-gateway-servlet/Motu'
-    
+
     * Dataset identifier to download
       - product_id: 'dataset-duacs-global-nrt-madt-merged-h'
-    
+
     * Service identifier to use for retrieving dataset
       - service_id: 'http://purl.org/myocean/ontology/service/database#yourduname'
-    
+
     * Geographic extraction parameters
       - latitude_max :  10.0
       - latitude_min : -10.0
@@ -690,26 +690,26 @@ def execute_request(_options):
     * Vertical extraction parameters
       - depth_max: 1000
       - depth_min: 0
-    
+
     * Temporal extraction parameters, as a datetime instance or a string (format: '%Y-%m-%d %H:%M:%S')
       - date_max: 2010-04-25 12:05:36
       - date_min: 2010-04-25
 
     * Variable extraction
       - variable: ['variable1','variable2']
-      
+
     * The file name and the directory of the downloaded dataset
       - out_dir : '.'
       - out_name: 'dataset'
-      
+
     * The block size used to perform download
       - block_size: 12001
-      
+
     * The socket timeout configuration
       - socket_timeout: 515
 
     * The user agent to use when performing http requests
-      - user_agent: 'motu-api-client' 
+      - user_agent: 'motu-api-client'
 
     """
     global log
